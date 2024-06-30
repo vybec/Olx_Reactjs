@@ -2,13 +2,19 @@ import React,{useEffect,useContext} from 'react';
 
 import {BrowserRouter as Router,Route} from 'react-router-dom'
 
+//tab create cheyan
+
 import Signup from './Pages/Signup'
 
 import Login from './Pages/Login'
 
 import Create from './Pages/Create'
 
+import View from './Pages/ViewPost'
+
 import { AuthContext, FirebaseContext } from './storage/Context'
+
+import Post from './storage/PostContext';
 
 import './App.css';
 
@@ -19,11 +25,14 @@ import './App.css';
  */
 import Home from './Pages/Home';
 
+
 function App() {
 
   const {setUser} =useContext(AuthContext)
 
   const {firebase} = useContext(FirebaseContext)
+
+
 
   useEffect(()=>{
 
@@ -33,7 +42,10 @@ function App() {
 
   })
   return (
+    //tab execution
     <div>
+
+      <Post>
       
       <Router>
         <Route exact path='/'>
@@ -52,7 +64,13 @@ function App() {
           <Create />
         </Route>
 
+        <Route path='/View'>
+          <View/>
+        </Route>
+
       </Router>
+      
+      </Post>
 
       
     </div>
